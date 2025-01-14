@@ -1,0 +1,36 @@
+<div class="enhorabona-container">
+  <h1>{{ message }}</h1>
+  <form [formGroup]="formData" (ngSubmit)="enviarFormulari()">
+
+    <input
+      type="text"
+      formControlName="nom"
+      placeholder="Nom"
+      [class.invalid]="formData.get('nom')?.touched && formData.get('nom')?.invalid"
+    />
+
+    <input
+      type="text"
+      formControlName="cognom"
+      placeholder="Cognom"
+      [class.invalid]="formData.get('cognom')?.touched && formData.get('cognom')?.invalid"
+    />
+
+    <input
+      type="email"
+      formControlName="correu"
+      placeholder="Correu electrònic"
+      [class.invalid]="formData.get('correu')?.touched && formData.get('correu')?.invalid"
+    />
+
+    <button type="submit" [disabled]="formData.invalid">Enviar</button>
+  </form>
+
+  <h2>Guanyadors Recents:</h2>
+  <ul>
+    <li *ngFor="let guanyador of guanyadors">
+      {{ guanyador.nom }} {{ guanyador.cognom }}
+    </li>
+  </ul>
+  <button (click)="tancar()">Tancar</button>
+</div>

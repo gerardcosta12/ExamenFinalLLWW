@@ -1,0 +1,26 @@
+<section class="quiz-container">
+  <h1>Preguntes - Quizz</h1>
+
+  <div *ngIf="preguntaActual" class="question-box">
+    <h2>{{ preguntaActual.pregunta }}</h2>
+
+    <div class="answers">
+      <button
+        *ngFor="let opcio of preguntaActual.opcions"
+        (click)="seleccionarOpcio(opcio)"
+        [disabled]="respostesBloquejades"
+      >
+        {{ opcio.text }}
+      </button>
+    </div>
+
+    <div *ngIf="missatgeResultat" class="resultat">
+      <p>{{ missatgeResultat }}</p>
+      <button (click)="seguentPregunta()">Següent</button>
+    </div>
+  </div>
+
+  <div *ngIf="!preguntaActual && preguntes.length > 0" class="fi-quiz">
+    <h2>Categoria finalitzada!</h2>
+  </div>
+</section>

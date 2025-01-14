@@ -1,0 +1,24 @@
+body {
+  background-color: #f5ff97;
+  color: black;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+footer {
+  background-color: #ff4136;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position:static;
+  bottom: 0;
+  width: 100%;
+}

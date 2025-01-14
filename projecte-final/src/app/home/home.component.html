@@ -1,0 +1,20 @@
+<body>
+  <header>
+    <h1>🎉 Benvingut a aquest Quizz. Posa't a prova! 🎉</h1>
+    <p>Respon a les preguntes correctament para anar sumant punts</p>
+  </header>
+
+  <section id="main-content">
+    <img src="https://s03.s3c.es/imag/_v0/635x324/c/a/4/preguntados.jpg" alt="Quizz" class="main-image">
+    <h2>Selecciona una temàtica per començar:</h2>
+
+    <div class="categories">
+      <button class="category-button" [routerLink]="['/preguntes', 'ciencia']">🧬 Ciència i Natura</button>
+      <button class="category-button" [routerLink]="['/preguntes', 'historia']">📜 Història</button>
+      <button class="category-button" [routerLink]="['/preguntes', 'esports']">⚽ Esports</button>
+      <button class="category-button" [routerLink]="['/preguntes', 'art']">🎨 Art i Literatura</button>
+      <button class="category-button" [routerLink]="['/preguntes', 'geografia']">🌍 Geografia</button>
+      <button class="category-button" [routerLink]="['/preguntes', 'entreteniment']">🎭 Entreteniment</button>
+    </div>
+  </section>
+</body>
