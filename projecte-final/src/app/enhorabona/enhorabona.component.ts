@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-enhorabona',
@@ -17,9 +18,10 @@ export class EnhorabonaComponent implements OnInit {
   guanyadors: any[] = [];
   formData!: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router, private fb: FormBuilder) {}
+  constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private eventService: EventService) {}
 
   ngOnInit(): void {
+    this.eventService.registrarVisita('enhorabona').subscribe();
     this.http.get<any[]>('http://localhost:3000/api/guanyadors/guanyadors').subscribe(data => {
       this.guanyadors = data;
     });
@@ -33,6 +35,7 @@ export class EnhorabonaComponent implements OnInit {
 
   enviarFormulari() {
     if (this.formData.valid) {
+      this.eventService.registrarClick('enhorabona-enviar').subscribe();
       this.http.post('http://localhost:3000/api/guanyadors/guanyador', this.formData.value).subscribe(response => {
         alert('Gràcies per participar!');
         this.formData.reset();
@@ -41,6 +44,7 @@ export class EnhorabonaComponent implements OnInit {
   }
 
   tancar(): void {
+    this.eventService.registrarClick('enhorabona-tancar').subscribe();
     this.router.navigate(['/']);
   }
 }

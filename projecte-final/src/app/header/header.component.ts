@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PuntuacioService } from '../puntuacio.service';
-import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-header',

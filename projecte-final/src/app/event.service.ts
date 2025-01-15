@@ -11,6 +11,16 @@ export class EventService {
 
   constructor(private http: HttpClient, private sessionService: SessionService) {}
 
+  obtenirUltimsEsdeveniments(filters: any): Observable<any[]> {
+    const params = {
+      dataInici: filters.dataInici,
+      dataFinal: filters.dataFinal,
+      llocEvent: filters.llocEvent,
+      tipusEvent: filters.tipusEvent
+    };
+    return this.http.get<any[]>(`${this.apiUrl}/ultims-events`, { params });
+  }
+
   registrarVisita(llocEvent: string): Observable<any> {
     const sessionId = this.sessionService.getSessionId();
     return this.http.post(this.apiUrl + '/event', { sessionId, llocEvent, tipusEvent: 'visita' });
