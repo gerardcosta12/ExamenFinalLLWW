@@ -7,7 +7,25 @@ export const crearEvent = async (req, res) => {
     await nouEvent.save();
     res.status(201).json(nouEvent);
   } catch (error) {
-    res.status(500).json({ error: "Error al crear l\'esdeveniment" });
+    res.status(500).json({ error: "Error al crear l'esdeveniment" });
+  }
+};
+
+export const obtenirUltimsEvents = async (req, res) => {
+  try {
+    const { llocEvent, tipusEvent } = req.query;
+    let filtre = {};
+
+    if (llocEvent) filtre.llocEvent = llocEvent;
+    if (tipusEvent) filtre.tipusEvent = tipusEvent;
+
+    const ultimsEvents = await Event.find(filtre)
+      .sort({ createdAt: -1 })
+      .limit(50);
+
+    res.json(ultimsEvents);
+  } catch (error) {
+    res.status(500).json({ error: 'Error a obtenir els últims esdeveniments' });
   }
 };
 
