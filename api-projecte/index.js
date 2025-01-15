@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 import preguntesRoutes from './routes/preguntes.js';
 import guanyadorsRoutes from './routes/guanyadors.js';
+import eventsRoutes from './routes/events.js';
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,7 @@ connectDB();
 
 app.use('/api/preguntes', preguntesRoutes);
 app.use('/api/guanyadors', guanyadorsRoutes);
+app.use('/api/events', eventsRoutes);
 
 app.get('/', (req, res) => {
   res.send('API funcionant correctament');
