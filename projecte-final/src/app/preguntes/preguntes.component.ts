@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Pregunta, PreguntaService } from './preguntes.service';
 import { PuntuacioService } from '../puntuacio.service';
 import { Router } from '@angular/router';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-preguntes',
@@ -33,6 +34,7 @@ export class PreguntesComponent implements OnInit {
 
   constructor(
     private preguntaService: PreguntaService,
+    private eventService: EventService,
     private route: ActivatedRoute,
     private puntuacioService: PuntuacioService,
     private router: Router
@@ -44,6 +46,7 @@ export class PreguntesComponent implements OnInit {
       alert(`Ja has completat aquesta categoria!`);
       return;
     }
+    this.eventService.registrarVisita('preguntes-' + this.tematica).subscribe();
     this.carregarPreguntes();
   }
 
