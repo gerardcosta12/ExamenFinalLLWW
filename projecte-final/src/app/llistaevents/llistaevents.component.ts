@@ -16,6 +16,7 @@ import { EventService } from '../event.service';
 export class LlistaeventsComponent implements OnInit {
   events: any[] = [];
   filtersForm!: FormGroup;
+  estadistiques: any = { visita: 0, click: 0 };
 
   constructor(
     private eventService: EventService,
