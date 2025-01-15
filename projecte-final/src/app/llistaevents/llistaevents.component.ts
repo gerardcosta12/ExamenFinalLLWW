@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../event.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-llistaevents',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './llistaevents.component.html',
   styleUrls: ['./llistaevents.component.css']
 })

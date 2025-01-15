@@ -11,7 +11,7 @@ export const crearEvent = async (req, res) => {
   }
 };
 
-export const obtenirUltimsEvents = async (req, res) => {
+export const obtenirEstadistiques = async (req, res) => {
   try {
     const { dataInici, dataFinal, llocEvent, tipusEvent } = req.query;
 
@@ -21,12 +21,13 @@ export const obtenirUltimsEvents = async (req, res) => {
     if (llocEvent) filtre.llocEvent = llocEvent;
     if (tipusEvent) filtre.tipusEvent = tipusEvent;
 
-    const ultimsEvents = await Event.find(filtre)
-      .sort({ createdAt: -1 })
-      .limit(20);
+    const estadistiques = await Event.aggregate([
+      { $match: filtre },
+      { $group: { _id: '$tipusEvent', count: { $sum: 1 } } },
+    ]);
 
-    res.json(ultimsEvents);
+    res.json(estadistiques);
   } catch (error) {
-    res.status(500).json({ error: 'Error a obtenir els últims esdeveniments' });
+    res.status(500).json({ error: 'Error a obtenir les estadístiques' });
   }
 };

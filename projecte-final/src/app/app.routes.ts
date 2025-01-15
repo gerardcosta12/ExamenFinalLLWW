@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreguntesComponent } from './preguntes/preguntes.component';
 import { HomeComponent } from './home/home.component';
 import { EnhorabonaComponent } from './enhorabona/enhorabona.component';
+import { LlistaeventsComponent } from './llistaevents/llistaevents.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,11 @@ export const routes: Routes = [
     path: 'enhorabona',
     component: EnhorabonaComponent,
     title: 'Enhorabona - Quizz'
+  },
+  {
+    path: 'llistaevents',
+    component: LlistaeventsComponent,
+    title: 'Llista d\'esdeveniments - Quizz'
   },
   {
     path: '**',

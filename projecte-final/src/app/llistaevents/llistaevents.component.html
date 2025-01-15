@@ -1,1 +1,30 @@
-<p>llistaevents works!</p>
+<div class="filters">
+  <form [formGroup]="filtersForm" (ngSubmit)="aplicarFiltres()">
+    <label for="dataInici">Data d'inici:</label>
+    <input type="date" formControlName="dataInici" />
+
+    <label for="dataFinal">Data final:</label>
+    <input type="date" formControlName="dataFinal" />
+
+    <label for="llocEvent">Lloc d'esdeveniment:</label>
+    <input type="text" formControlName="llocEvent" />
+
+    <label for="tipusEvent">Tipus d'esdeveniment:</label>
+    <select formControlName="tipusEvent">
+      <option value="">Tots</option>
+      <option value="visita">Visita</option>
+      <option value="click">Click</option>
+    </select>
+
+    <button type="submit" [disabled]="filtersForm.invalid">Aplicar filtres</button>
+  </form>
+</div>
+
+<div class="event-list">
+  <h2>Últims esdeveniments:</h2>
+  <ul>
+    <li *ngFor="let event of events">
+      <p><strong>{{ event.llocEvent }}</strong> - {{ event.tipusEvent }} - {{ event.createdAt | date }}</p>
+    </li>
+  </ul>
+</div>
