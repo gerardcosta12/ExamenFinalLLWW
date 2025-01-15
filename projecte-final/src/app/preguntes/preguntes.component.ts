@@ -75,6 +75,7 @@ export class PreguntesComponent implements OnInit {
 
   seleccionarOpcio(opcio: any): void {
     this.respostesBloquejades = true;
+    this.eventService.registrarClick('pregunta-' + this.tematica + '-opcio').subscribe();
 
     if (opcio.correcta) {
       this.puntuacioPerCategoria[this.tematica]++;
