@@ -24,8 +24,6 @@ export class LlistaeventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.filtersForm = this.fb.group({
-      dataInici: [''],
-      dataFinal: [''],
       llocEvent: [''],
       tipusEvent: ['']
     });

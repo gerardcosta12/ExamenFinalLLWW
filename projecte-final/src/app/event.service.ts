@@ -13,8 +13,6 @@ export class EventService {
 
   obtenirUltimsEsdeveniments(filters: any): Observable<any[]> {
     const params = {
-      dataInici: filters.dataInici,
-      dataFinal: filters.dataFinal,
       llocEvent: filters.llocEvent,
       tipusEvent: filters.tipusEvent
     };
